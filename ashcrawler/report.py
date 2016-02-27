@@ -12,8 +12,8 @@ import socket
 import smtplib
 from pymongo import MongoClient
 
-from wbcrawler.settings import EMAIL_PASSWORD
-from wbcrawler.log import *
+from ashcrawler.settings import EMAIL_PASSWORD
+from log import *
 
 
 # receiver string
