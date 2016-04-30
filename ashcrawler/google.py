@@ -22,7 +22,7 @@ from settings import TIMEOUT, TZCHINA
 import datetime
 
 
-# Crawling pages from Baidu.com
+# Crawling pages from Google.com
 def ggcrawler(keyword, project, address, port):
     start = datetime.datetime.now()
     log(NOTICE, 'Crawling Google with keyword %s....' % keyword)
