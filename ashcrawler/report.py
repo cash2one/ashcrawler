@@ -45,9 +45,9 @@ def brief_report(settings):
 
     total_posts = db.pages.find().count()
 
-    count_1 = db.pages.find({"timestamp": {"$gt": utc_now_1}}).count()
-    count_2 = db.pages.find({"timestamp": {"$gt": utc_now_2}}).count()
-    count_5 = db.pages.find({"timestamp": {"$gt": utc_now_5}}).count()
+    count_1 = db.pages.find({"created_at": {"$gt": utc_now_1}}).count()
+    count_2 = db.pages.find({"created_at": {"$gt": utc_now_2}}).count()
+    count_5 = db.pages.find({"created_at": {"$gt": utc_now_5}}).count()
 
     line_2 = "Total posts: %d" % total_posts
     line_3 = "Within the past 24 hours: %d collected" % count_1
