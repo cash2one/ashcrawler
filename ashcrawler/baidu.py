@@ -12,6 +12,7 @@ import urllib
 import platform
 from pymongo import MongoClient, errors
 from selenium import webdriver
+from pyvirtualdisplay import Display
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -27,19 +28,19 @@ import datetime
 def bdcrawler(keyword, project, address, port):
     start = datetime.datetime.now()
     log(NOTICE, 'Crawling Baidu with keyword %s....' % keyword)
-    if "Linux" in platform.platform():
-         browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
-    else:
-        browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
+    # if "Linux" in platform.platform():
+    #      browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
+    # else:
+    #     browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
 
-    # firefox_profile = webdriver.FirefoxProfile()
-    # firefox_profile.set_preference('permissions.default.image', 2)
-    # firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
-    #
-    # browser = webdriver.Firefox(firefox_profile=firefox_profile)
-    #
-    # browser.set_window_size(960, 1050)
-    # browser.set_window_position(0, 0)
+    firefox_profile = webdriver.FirefoxProfile()
+    firefox_profile.set_preference('permissions.default.image', 2)
+    firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
+
+    browser = webdriver.Firefox(firefox_profile=firefox_profile)
+
+    browser.set_window_size(960, 1050)
+    browser.set_window_position(0, 0)
 
     browser.set_page_load_timeout(TIMEOUT)
 
