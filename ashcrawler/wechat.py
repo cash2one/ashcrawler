@@ -34,8 +34,7 @@ def wccrawler(keyword, project, address, port):
     if "Linux" in platform.platform():
          browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
     else:
-        # browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
-        pass
+        browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
 
     browser.set_page_load_timeout(TIMEOUT)
 
@@ -51,17 +50,9 @@ def wccrawler(keyword, project, address, port):
             # print 'time out after %d seconds when loading page' % TIMEOUT
             # browser.execute_script('window.stop()')
             log(NOTICE, "refreshing...")
-    # time.sleep(5)
+
     WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.ID, 'loginBtn')))
     browser.find_element_by_id('loginBtn').click()
-
-    #time.sleep(10)
-    #browser.get('https://graph.qq.com/oauth/show?which=Login&display=pc&scope=get_user_info%2Cget_app_friends&response_type=code&show_auth_items=0&redirect_uri=https%3A%2F%2Faccount.sogou.com%2Fconnect%2Fcallback%2Fqq%3Fru%3Dhttp%25253A%25252F%25252Fweixin.sogou.com%25252Fpcindex%25252Flogin%25252Fqq_login_callback_page.html%26ip%3D23.127.5.35%26type%3Dweb%26client_id%3D2017&state=49126c6d-2907-4f4a-a4a0-b509755d6267&client_id=100294784')
-    #
-    # try:
-    #     browser.get('https://graph.qq.com/oauth/show?which=Login&display=pc&scope=get_user_info%2Cget_app_friends&response_type=code&show_auth_items=0')
-    # except TimeoutException:
-    #     time.sleep(2)
 
     time.sleep(2)
     browser.switch_to.frame(0)

@@ -30,8 +30,7 @@ def bdcrawler(keyword, project, address, port):
     if "Linux" in platform.platform():
          browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
     else:
-        # browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
-        pass
+        browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
 
     # firefox_profile = webdriver.FirefoxProfile()
     # firefox_profile.set_preference('permissions.default.image', 2)
@@ -47,8 +46,6 @@ def bdcrawler(keyword, project, address, port):
     client = MongoClient(address, port)
     db = client[project]
     base_url = "http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=baidu&wd="
-    # base_url = "http://www.baidu.com/s?wd="
-    # log(NOTICE, "Total #: %d" % count)
 
     try:
         browser.get(base_url + urllib.quote(keyword))
@@ -58,7 +55,7 @@ def bdcrawler(keyword, project, address, port):
 
     WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.CLASS_NAME, 'search_tool')))
     browser.find_element_by_class_name('search_tool').click()
-    time.sleep(5)
+    time.sleep(3)
     WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.CLASS_NAME, 'search_tool_tf')))
     browser.find_element_by_class_name('search_tool_tf').click()
     log(NOTICE, 'Harvesting the new pages generated within the past 24 hours.')
@@ -77,17 +74,11 @@ def bdcrawler(keyword, project, address, port):
         try:
             browser.get(url)
         except TimeoutException:
-            # print 'time out after %d seconds when loading page' % TIMEOUT
             browser.execute_script('window.stop()')
         soup = BeautifulSoup(browser.page_source, 'html5lib')
         items = soup.find_all('div', class_='result c-container ')
-        # print url
         t_china = datetime.datetime.now(TZCHINA)
-        print "test 1"
         for item in items:
-            print "test 2"
-            print len(item)
-            print "test 3"
             try:
                 title = item.find('h3').text
                 time_before = item.find('span', class_=' newTimeFactor_before_abs m').text[:-3]

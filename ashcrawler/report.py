@@ -56,7 +56,7 @@ def brief_report(settings):
     line_6 = "Within the past 24 hours: %d google records were collected" % count_google_1
     line_7 = "Within the past 24 hours: %d wechat records were collected" % count_wechat_1
 
-    msg = '''From: Ash Crawlling Server <snsgis@gmail.com>
+    msg = '''From: Ash Crawling Server <snsgis@gmail.com>
 To: ''' + pi_str[:-1] + '''
 Subject: [''' + t + '''] Daily Briefing for the ''' + project.capitalize() + ''' Project
 MIME-Version: 1.0
@@ -74,7 +74,7 @@ Here is a briefing about the crawling progress:
      ''' + line_6 + '''
      ''' + line_7 + '''
 --
-Sent from the Ash Crawlling Server.'''
+Sent from the Ash Crawling Server.'''
     # The actual mail send
     try:
         server = smtplib.SMTP()

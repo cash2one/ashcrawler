@@ -10,7 +10,7 @@
 from pytz import timezone
 TZCHINA = timezone('Asia/Chongqing')
 UTC = timezone('UTC')
-TIMEOUT = 120
+TIMEOUT = 60
 
 BAIDU_AK = 'Y4wB8DznamkwhY8RxDiYNSHS'
 # BAIDU_AK = 'fGnFQVLoY6AgmPM1spgYvsD9'
