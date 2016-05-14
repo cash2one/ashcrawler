@@ -47,6 +47,10 @@ def bdcrawler(keyword, project, address, port):
     browser.set_page_load_timeout(TIMEOUT)
 
     client = MongoClient(address, port)
+
+    db_auth = client[project]
+    db_auth.authenticate('crawler', 'ash123!@#')
+
     db = client[project]
     base_url = "http://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=1&tn=baidu&wd="
 
