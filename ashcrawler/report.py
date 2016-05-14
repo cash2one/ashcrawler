@@ -33,7 +33,7 @@ def brief_report(settings):
     now = datetime.datetime.now()
     utc_now_1 = now - datetime.timedelta(days=1)
     utc_now_2 = now - datetime.timedelta(days=2)
-    utc_now_5 = now - datetime.timedelta(days=5)
+    utc_now_5 = now - datetime.timedelta(days=7)
 
     # For page information
     client = MongoClient(address, port)
@@ -43,22 +43,22 @@ def brief_report(settings):
 
     count_1 = db.pages.find({"created_at": {"$gt": utc_now_1}}).count()
     count_2 = db.pages.find({"created_at": {"$gt": utc_now_2}}).count()
-    count_5 = db.pages.find({"created_at": {"$gt": utc_now_5}}).count()
+    count_7 = db.pages.find({"created_at": {"$gt": utc_now_5}}).count()
     count_baidu_1  = db.pages.find({"$and": [{"type": "baidu"}, {"created_at": {"$gt": utc_now_2}}]}).count()
     count_google_1 = db.pages.find({"$and": [{"type": "google"}, {"created_at": {"$gt": utc_now_2}}]}).count()
     count_wechat_1 = db.pages.find({"$and": [{"type": "wechat"}, {"created_at": {"$gt": utc_now_2}}]}).count()
 
     line_1 = "Total records: %d" % total_posts
-    line_2 = "Within the past 24 hours: %d collected" % count_1
-    line_3 = "Within the past 2 days: %d collected" % count_2
-    line_4 = "Within the past 5 days: %d collected" % count_5
+    line_2 = "Within the past 24 hours: %d were collected" % count_1
+    line_3 = "Within the past 2 days: %d were collected" % count_2
+    line_4 = "Within the past week: %d were collected" % count_7
     line_5 = "Within the past 24 hours: %d baidu records were collected" % count_baidu_1
     line_6 = "Within the past 24 hours: %d google records were collected" % count_google_1
     line_7 = "Within the past 24 hours: %d wechat records were collected" % count_wechat_1
 
     msg = '''From: Ash Crawlling Server <snsgis@gmail.com>
 To: ''' + pi_str[:-1] + '''
-Subject: [''' + t + '''] Daily Briefing for ''' + project.capitalize() + ''' Project
+Subject: [''' + t + '''] Daily Briefing for the ''' + project.capitalize() + ''' Project
 MIME-Version: 1.0
 
 Dear project members,
