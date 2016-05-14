@@ -31,6 +31,7 @@ def bdcrawler(keyword, project, address, port):
          browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
     else:
         # browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
+        pass
 
     # if "Linux" in platform.platform():
     #     display = Display(visible=0, size=(1024, 768))
