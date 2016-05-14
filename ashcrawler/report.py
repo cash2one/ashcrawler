@@ -48,11 +48,17 @@ def brief_report(settings):
     count_1 = db.pages.find({"created_at": {"$gt": utc_now_1}}).count()
     count_2 = db.pages.find({"created_at": {"$gt": utc_now_2}}).count()
     count_5 = db.pages.find({"created_at": {"$gt": utc_now_5}}).count()
+    count_baidu_1  = db.pages.find({"$OR": [{"type": "baidu"}, {"created_at": {"$gt": utc_now_2}}]}).count()
+    count_google_1 = db.pages.find({"$OR": [{"type": "google"}, {"created_at": {"$gt": utc_now_2}}]}).count()
+    count_wechat_1 = db.pages.find({"$OR": [{"type": "wechat"}, {"created_at": {"$gt": utc_now_2}}]}).count()
 
-    line_2 = "Total posts: %d" % total_posts
-    line_3 = "Within the past 24 hours: %d collected" % count_1
-    line_4 = "Within the past 2 days: %d collected" % count_2
-    line_5 = "Within the past 5 days: %d collected" % count_5
+    line_1 = "Total posts: %d" % total_posts
+    line_2 = "Within the past 24 hours: %d collected" % count_1
+    line_3 = "Within the past 2 days: %d collected" % count_2
+    line_4 = "Within the past 5 days: %d collected" % count_5
+    line_5 = "Within the past 5 days: %d collected" % count_baidu_1
+    line_6 = "Within the past 5 days: %d collected" % count_google_1
+    line_7 = "Within the past 5 days: %d collected" % count_wechat_1
 
     msg = '''From: Weibo Crawler Server <snsgis@gmail.com>
 To: ''' + pi_str[:-1] + '''
@@ -64,11 +70,13 @@ Dear PI(s),
 Here is a briefing about the progress of Weibo data harvest:
 
 
+     ''' + line_1 + '''
      ''' + line_2 + '''
      ''' + line_3 + '''
      ''' + line_4 + '''
      ''' + line_5 + '''
-
+     ''' + line_6 + '''
+     ''' + line_7 + '''
 --
 Sent from the Weibo Cralwer Server.'''
     # The actual mail send
