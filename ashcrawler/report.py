@@ -16,10 +16,6 @@ from ashcrawler.settings import EMAIL_PASSWORD
 from log import *
 
 
-# receiver string
-# example rief_report('jakobzhao@gmail.com;bo_zhao@hks.harvard.edu', "weibo")
-# funcs
-
 def brief_report(settings):
     pis = settings['pis']
     project = settings['project']
@@ -65,7 +61,7 @@ To: ''' + pi_str[:-1] + '''
 Subject: [''' + t + '''] Daily Briefing for ''' + project.capitalize() + ''' Project
 MIME-Version: 1.0
 
-Dear Project members,
+Dear project members,
 
 Here is a briefing about the crawling progress:
 

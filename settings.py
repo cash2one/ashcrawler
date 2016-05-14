@@ -10,7 +10,7 @@
 
 SETTINGS = {
     'project': 'philanthropy',
-    'pis': ['jakobzhao@gmail.com'],
+    'pis': ['Edward_Cunningham@hks.harvard.edu', 'David_Li@hks.harvard.edu', 'xszhang.ellie@gmail.com', 'bo_zhao@hks.harvard.edu'],
     'address': 'localhost',
     'port': 27017,
     'robot_num': 8
