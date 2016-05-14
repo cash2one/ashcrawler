@@ -84,7 +84,6 @@ def ggcrawler(keyword, project, address, port):
             except AttributeError:
                 log(WARNING, 'find an unusual page.')
                 continue
-
             page_json = {
                 "type": "google",
                 "keyword": keyword,

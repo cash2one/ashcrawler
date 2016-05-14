@@ -19,11 +19,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from bs4 import BeautifulSoup
 from log import *
-
+import sys
 from settings import TIMEOUT, TZCHINA
 import datetime
 
-
+reload(sys)
+sys.setdefaultencoding('utf-8')
 # Crawling pages from Baidu.com
 def bdcrawler(keyword, project, address, port):
     start = datetime.datetime.now()
@@ -90,7 +91,7 @@ def bdcrawler(keyword, project, address, port):
                 orig_url = item.find('a', class_='c-showurl').text
                 log(NOTICE, '%s from %s at %s' % (title, orig_url, str(t_china)))
             except AttributeError:
-                log(WARNING, 'find an unusual page.')
+                log(NOTICE, 'find an unusual page.')
                 continue
             page_json = {
                 "type": "baidu",
