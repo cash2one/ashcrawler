@@ -9,7 +9,7 @@
 
 
 SETTINGS = {
-    'project': 'weibo',
+    'project': 'philanthropy',
     'pis': ['jakobzhao@gmail.com'],
     'address': 'localhost',
     'port': 27017,
