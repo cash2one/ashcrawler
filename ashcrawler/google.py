@@ -43,8 +43,8 @@ def ggcrawler(keyword, project, address, port):
     browser.set_page_load_timeout(TIMEOUT)
 
     client = MongoClient(address, port)
-    db_auth = client.admin
-    db_auth.authenticate('admin', 'ash123!@#')
+    db_auth = client[project]
+    db_auth.authenticate('crawler', 'ash123!@#')
     db = client[project]
     base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:d&q="
     # base_url = "http://www.baidu.com/s?wd="
