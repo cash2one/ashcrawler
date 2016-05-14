@@ -53,12 +53,12 @@ def bdcrawler(keyword, project, address, port):
     try:
         browser.get(base_url + urllib.quote(keyword))
     except TimeoutException:
-        # print 'time out after %d seconds when loading page' % TIMEOUT
+        print 'time out after %d seconds when loading page' % TIMEOUT
         browser.execute_script('window.stop()')
 
     WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.CLASS_NAME, 'search_tool')))
     browser.find_element_by_class_name('search_tool').click()
-    time.sleep(2)
+    time.sleep(5)
     WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.CLASS_NAME, 'search_tool_tf')))
     browser.find_element_by_class_name('search_tool_tf').click()
     log(NOTICE, 'Harvesting the new pages generated within the past 24 hours.')
@@ -74,14 +74,18 @@ def bdcrawler(keyword, project, address, port):
         # print soup.find_all('a', class_='n')[-1].text
         url = path_url + '&pn=' + str(i * 10)
         log(NOTICE, '===============Parsing Page %d===============' % (i + 1))
-
+        print "test 1"
         try:
+            print "test 2"
             browser.get(url)
+            print "test 3"
         except TimeoutException:
+            print "test 4"
             # print 'time out after %d seconds when loading page' % TIMEOUT
             browser.execute_script('window.stop()')
 
         soup = BeautifulSoup(browser.page_source, 'html5lib')
+        print "test 5"
         items = soup.find_all('div', class_='result c-container ')
         # print url
         t_china = datetime.datetime.now(TZCHINA)
