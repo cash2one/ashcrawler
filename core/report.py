@@ -11,9 +11,9 @@
 import socket
 import smtplib
 from pymongo import MongoClient
-
 from core.settings import EMAIL_PASSWORD
 from log import *
+
 
 def brief_report(settings):
     pis = settings['pis']
@@ -48,9 +48,9 @@ def brief_report(settings):
     count_wechat_1 = db.pages.find({"$and": [{"type": "wechat"}, {"created_at": {"$gt": utc_now_2}}]}).count()
 
     line_1 = "Total records: %d" % total_posts
-    line_2 = "Within the past 24 hours: %d were collected (baidu: %d, google: %d, wechat: %d)." % (count_1, count_baidu_1, count_google_1, count_wechat_1)
-    line_3 = "Within the past 2 days: %d were collected." % count_2
-    line_4 = "Within the past week: %d were collected." % count_7
+    line_2 = "In the last 24 hours: %d (baidu: %d, google: %d, wechat: %d) were collected ." % (count_1, count_baidu_1, count_google_1, count_wechat_1)
+    line_3 = "In the last 2 days: %d were collected." % count_2
+    line_4 = "In the last week: %d were collected." % count_7
 
     msg = '''From: Ash Crawling Server <snsgis@gmail.com>
 To: ''' + pi_str[:-1] + '''
