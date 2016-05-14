@@ -13,7 +13,7 @@ from settings import SETTINGS
 import datetime
 import sys
 
-#sys.path.append("/home/ubuntu/.local/lib/python2.7/site-packages")
+# sys.path.append("/home/ubuntu/.local/lib/python2.7/site-packages")
 sys.path.append("/home/ubuntu/ashcrawler")
 
 
