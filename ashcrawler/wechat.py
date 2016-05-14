@@ -29,7 +29,7 @@ password = 'ashcenter2016'
 
 
 # Crawling pages from weixin.sogou.com
-def wccrawler(keyword, project, address, port):
+def wccrawler(keyword, project, address, port, username, password):
     start = datetime.datetime.now()
     log(NOTICE, 'Crawling WeChat with keyword %s....' % keyword)
 
@@ -42,6 +42,8 @@ def wccrawler(keyword, project, address, port):
 
     client = MongoClient(address, port)
     db = client[project]
+    db.authenticate(username, password)
+
     base_url = "http://weixin.sogou.com/"
 
     while True:

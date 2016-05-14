@@ -17,13 +17,14 @@ from log import *
 from settings import TIMEOUT, TZCHINA
 import datetime
 import sys
+import time
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
 
 # Crawling pages from Google.com
-def ggcrawler(keyword, project, address, port):
+def ggcrawler(keyword, project, address, port, username, password):
     start = datetime.datetime.now()
     log(NOTICE, 'Crawling Google with keyword %s....' % keyword)
     if "Linux" in platform.platform():
@@ -43,9 +44,8 @@ def ggcrawler(keyword, project, address, port):
     browser.set_page_load_timeout(TIMEOUT)
 
     client = MongoClient(address, port)
-    db_auth = client[project]
-    db_auth.authenticate('crawler', 'ash123!@#')
     db = client[project]
+    db.authenticate(username, password)
     base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:d&q="
     # base_url = "http://www.baidu.com/s?wd="
     # log(NOTICE, "Total #: %d" % count)
@@ -67,6 +67,7 @@ def ggcrawler(keyword, project, address, port):
 
         try:
             browser.get(url)
+            time.sleep(2)
         except TimeoutException:
             # print 'time out after %d seconds when loading page' % TIMEOUT
             browser.execute_script('window.stop()')

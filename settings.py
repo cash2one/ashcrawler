@@ -13,5 +13,7 @@ SETTINGS = {
     'pis': ['Edward_Cunningham@hks.harvard.edu', 'David_Li@hks.harvard.edu', 'xszhang.ellie@gmail.com', 'bo_zhao@hks.harvard.edu'],
     'address': 'localhost',
     'port': 27017,
+    'username': "crawler",
+    'password': "ash123!@#",
     'robot_num': 8
 }
