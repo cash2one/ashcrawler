@@ -12,8 +12,8 @@ from ashcrawler.log import *
 import datetime
 import sys
 
-sys.path.append("/home/bo/.local/lib/python2.7/site-packages")
-sys.path.append("/home/bo/Workspace/ashcrawler")
+sys.path.append("/home/ubuntu/.local/lib/python2.7/site-packages")
+sys.path.append("/home/ubuntu/ashcrawler")
 
 port = 27017
 address = 'localhost'
