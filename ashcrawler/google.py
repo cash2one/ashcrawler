@@ -7,14 +7,10 @@
 # @website:      http://yenching.org
 # @organization: Harvard Kennedy School
 
-import time
 import urllib
 import platform
 from pymongo import MongoClient, errors
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from bs4 import BeautifulSoup
 from log import *
