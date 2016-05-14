@@ -34,7 +34,7 @@ def wccrawler(keyword, project, address, port):
     log(NOTICE, 'Crawling WeChat with keyword %s....' % keyword)
 
     if "Linux" in platform.platform():
-         browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
+        browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
     else:
         browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
 
