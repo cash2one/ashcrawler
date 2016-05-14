@@ -47,17 +47,7 @@ def ggcrawler(keyword, project, address, port, username, password):
     db = client[project]
     db.authenticate(username, password)
     base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:d&q="
-    # base_url = "http://www.baidu.com/s?wd="
-    # log(NOTICE, "Total #: %d" % count)
-
-    # try:
-    #     browser.get(base_url + urllib.quote(keyword))
-    # except TimeoutException:
-    #     # print 'time out after %d seconds when loading page' % TIMEOUT
-    #     browser.execute_script('window.stop()')
-    #
-    # soup = BeautifulSoup(browser.page_source, 'html5lib')
-    # path_url = browser.current_url
+    
 
     i = 0
     while i == 0 or len(soup.find_all('div', class_='g')) != 0:

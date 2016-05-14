@@ -13,7 +13,6 @@ from settings import SETTINGS
 import datetime
 import sys
 
-# sys.path.append("/home/ubuntu/.local/lib/python2.7/site-packages")
 sys.path.append("/home/ubuntu/ashcrawler")
 
 keywords = ['捐赠 元', '慈善']
@@ -21,7 +20,7 @@ keywords = ['捐赠 元', '慈善']
 start = datetime.datetime.now()
 log(NOTICE, 'Wechat Crawler Initializing...')
 for keyword in keywords:
-    wccrawler(keyword, SETTINGS['project'], SETTINGS['address'], SETTINGS['port'])
+    wccrawler(keyword, SETTINGS['project'], SETTINGS['address'], SETTINGS['port'], SETTINGS['username'], SETTINGS['password'])
 
 log(NOTICE, 'Mission completes. Time: %d sec(s)' % (int((datetime.datetime.now() - start).seconds)))
 
