@@ -20,9 +20,11 @@ def brief_report(settings):
     project = settings['project']
     address = settings['address']
     port = settings['port']
+    username = settings['username']
+    password = settings['password']
 
     sender = 'snsgis@gmail.com'
-    username = 'snsgis@gmail.com'
+    email_name = 'snsgis@gmail.com'
     t = datetime.datetime.now().strftime('%Y-%m-%d')
 
     pi_str = ''
@@ -37,6 +39,7 @@ def brief_report(settings):
     # For page information
     client = MongoClient(address, port)
     db = client[project]
+    db.authenticate(username, password)
 
     total_posts = db.pages.find().count()
 
@@ -73,7 +76,7 @@ Sent from the Ash Crawling Server.'''
         server.connect('smtp.gmail.com', '587')
         server.ehlo()
         server.starttls()
-        server.login(username, EMAIL_PASSWORD)
+        server.login(email_name, EMAIL_PASSWORD)
         server.sendmail(sender, pis, msg)
         server.quit()
     except socket.gaierror, e:
