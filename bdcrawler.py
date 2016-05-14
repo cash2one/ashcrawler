@@ -9,6 +9,7 @@
 
 from ashcrawler.baidu import bdcrawler
 from ashcrawler.log import *
+from settings import SETTINGS
 import datetime
 import sys
 
@@ -17,14 +18,14 @@ sys.path.append("/home/ubuntu/ashcrawler")
 
 port = 27017
 address = 'localhost'
-project = 'cga'
+project = 'philanthropy'
 
 keywords = ['捐赠 元', '慈善']
 
 start = datetime.datetime.now()
 log(NOTICE, 'Baidu Crawler Initializing...')
 for keyword in keywords:
-    bdcrawler(keyword, project, address, port)
+    bdcrawler(keyword, SETTINGS['project'], SETTINGS['address'], SETTINGS['port'])
 
 log(NOTICE, 'Mission completes. Time: %d sec(s)' % (int((datetime.datetime.now() - start).seconds)))
 

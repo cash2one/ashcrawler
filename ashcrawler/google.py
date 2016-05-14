@@ -27,13 +27,10 @@ def ggcrawler(keyword, project, address, port):
     start = datetime.datetime.now()
     log(NOTICE, 'Crawling Google with keyword %s....' % keyword)
     if "Linux" in platform.platform():
-        pass
+         browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
     else:
-        browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
-
-    # if "Linux" in platform.platform():
-    #     display = Display(visible=0, size=(1024, 768))
-    #     display.start()
+        # browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
+        pass
 
     # firefox_profile = webdriver.FirefoxProfile()
     # firefox_profile.set_preference('permissions.default.image', 2)
@@ -43,8 +40,8 @@ def ggcrawler(keyword, project, address, port):
     #
     # browser.set_window_size(960, 1050)
     # browser.set_window_position(0, 0)
-    #
-    # browser.set_page_load_timeout(TIMEOUT)
+
+    browser.set_page_load_timeout(TIMEOUT)
 
     client = MongoClient(address, port)
     db = client[project]

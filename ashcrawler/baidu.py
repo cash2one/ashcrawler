@@ -33,10 +33,6 @@ def bdcrawler(keyword, project, address, port):
         # browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
         pass
 
-    # if "Linux" in platform.platform():
-    #     display = Display(visible=0, size=(1024, 768))
-    #     display.start()
-    #
     # firefox_profile = webdriver.FirefoxProfile()
     # firefox_profile.set_preference('permissions.default.image', 2)
     # firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')

@@ -9,22 +9,19 @@
 
 from ashcrawler.wechat import wccrawler
 from ashcrawler.log import *
+from settings import SETTINGS
 import datetime
 import sys
 
 sys.path.append("/home/ubuntu/.local/lib/python2.7/site-packages")
 sys.path.append("/home/ubuntu/ashcrawler")
 
-port = 27017
-address = 'localhost'
-project = 'cga'
-
 keywords = ['捐赠 元', '慈善']
 
 start = datetime.datetime.now()
 log(NOTICE, 'Wechat Crawler Initializing...')
 for keyword in keywords:
-    wccrawler(keyword, project, address, port)
+    wccrawler(keyword, SETTINGS['project'], SETTINGS['address'], SETTINGS['port'])
 
 log(NOTICE, 'Mission completes. Time: %d sec(s)' % (int((datetime.datetime.now() - start).seconds)))
 

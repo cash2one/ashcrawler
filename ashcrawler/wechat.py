@@ -22,8 +22,8 @@ from log import *
 from settings import TIMEOUT, TZCHINA
 import datetime
 
-username = 'your QQ number'
-password = 'your QQ password'
+username = 'AshCenter'
+password = 'ashcenter2016'
 
 
 # Crawling pages from weixin.sogou.com
