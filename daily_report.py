@@ -17,7 +17,7 @@ import sys
 sys.path.append("/home/ubuntu/.local/lib/python2.7/site-packages")
 sys.path.append("/home/ubuntu/ashcrawler")
 
-from wbcrawler.report import brief_report
+from ashcrawler.report import brief_report
 from settings import SETTINGS
 
 brief_report(SETTINGS)
