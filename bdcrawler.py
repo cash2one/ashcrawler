@@ -16,10 +16,6 @@ import sys
 # sys.path.append("/home/ubuntu/.local/lib/python2.7/site-packages")
 sys.path.append("/home/ubuntu/ashcrawler")
 
-port = 27017
-address = 'localhost'
-project = 'philanthropy'
-
 keywords = ['捐赠 元', '慈善']
 
 start = datetime.datetime.now()
