@@ -14,13 +14,15 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.common.proxy import *
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from bs4 import BeautifulSoup
 from log import *
 from settings import TIMEOUT, TZCHINA
 import datetime
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 username = 'AshCenter'
 password = 'ashcenter2016'

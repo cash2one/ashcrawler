@@ -25,20 +25,22 @@ import datetime
 
 reload(sys)
 sys.setdefaultencoding('utf-8')
+
+
 # Crawling pages from Baidu.com
 def bdcrawler(keyword, project, address, port):
     start = datetime.datetime.now()
     log(NOTICE, 'Crawling Baidu with keyword %s....' % keyword)
-    # if "Linux" in platform.platform():
-    #      browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
-    # else:
-    #     browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
+    if "Linux" in platform.platform():
+         browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
+    else:
+        browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
 
-    display = Display(visible=0, size=(1600, 1200))
-    display.start()
-    firefox_profile = webdriver.FirefoxProfile()
-    firefox_profile.set_preference('permissions.default.image', 2)
-    firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
+    # display = Display(visible=0, size=(1600, 1200))
+    # display.start()
+    # firefox_profile = webdriver.FirefoxProfile()
+    # firefox_profile.set_preference('permissions.default.image', 2)
+    # firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
 
     browser = webdriver.Firefox(firefox_profile=firefox_profile)
 

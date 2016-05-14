@@ -20,6 +20,10 @@ from bs4 import BeautifulSoup
 from log import *
 from settings import TIMEOUT, TZCHINA
 import datetime
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 # Crawling pages from Google.com
