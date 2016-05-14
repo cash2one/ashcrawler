@@ -74,22 +74,20 @@ def bdcrawler(keyword, project, address, port):
         # print soup.find_all('a', class_='n')[-1].text
         url = path_url + '&pn=' + str(i * 10)
         log(NOTICE, '===============Parsing Page %d===============' % (i + 1))
-        print "test 1"
         try:
-            print "test 2"
             browser.get(url)
-            print "test 3"
         except TimeoutException:
-            print "test 4"
             # print 'time out after %d seconds when loading page' % TIMEOUT
             browser.execute_script('window.stop()')
-
         soup = BeautifulSoup(browser.page_source, 'html5lib')
-        print "test 5"
         items = soup.find_all('div', class_='result c-container ')
         # print url
         t_china = datetime.datetime.now(TZCHINA)
+        print "test 1"
         for item in items:
+            print "test 2"
+            print len(item)
+            print "test 3"
             try:
                 title = item.find('h3').text
                 time_before = item.find('span', class_=' newTimeFactor_before_abs m').text[:-3]
