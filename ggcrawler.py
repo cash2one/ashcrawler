@@ -7,13 +7,16 @@
 # @website:      http://yenching.org
 # @organization: Harvard Kennedy School
 
-from ashcrawler.google import ggcrawler
-from ashcrawler.log import *
-from settings import SETTINGS
-import datetime
-import sys
 
-sys.path.append("/home/ubuntu/ashcrawler")
+import os
+import sys
+from core.google import ggcrawler
+from core.log import *
+from settings import SETTINGS
+
+current_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
+sys.path.append(current_path)
+
 
 keywords = ['捐赠 元', '慈善']
 

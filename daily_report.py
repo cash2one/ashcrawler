@@ -13,11 +13,14 @@
 # show below is not attached as well. (I cost almost 24 hours to find it out..)
 
 import sys
-
-sys.path.append("/home/ubuntu/.local/lib/python2.7/site-packages")
-sys.path.append("/home/ubuntu/ashcrawler")
-
-from ashcrawler.report import brief_report
+import os
+from core.report import brief_report
 from settings import SETTINGS
 
+current_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
+sys.path.append(current_path)
+
 brief_report(SETTINGS)
+
+if __name__ == '__main__':
+    pass

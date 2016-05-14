@@ -7,13 +7,15 @@
 # @website:      http://yenching.org
 # @organization: Harvard Kennedy School
 
-from ashcrawler.wechat import wccrawler
-from ashcrawler.log import *
-from settings import SETTINGS
-import datetime
-import sys
 
-sys.path.append("/home/ubuntu/ashcrawler")
+import sys
+import os
+from core.wechat import wccrawler
+from core.log import *
+from settings import SETTINGS
+
+current_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
+sys.path.append(current_path)
 
 keywords = ['捐赠 元', '慈善']
 

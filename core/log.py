@@ -8,10 +8,6 @@
 # @organization: Harvard Kennedy School
 
 import datetime
-# from settings import TZCHINA
-# from pushbullet import Pushbullet
-# from settings import PB_KEY
-# pb = Pushbullet(PB_KEY)
 
 NOTICE, RECORD, WARNING, ERROR, FATALITY, PUSH = 0, 1, 2, 4, 8, 16
 

@@ -12,9 +12,8 @@ import socket
 import smtplib
 from pymongo import MongoClient
 
-from ashcrawler.settings import EMAIL_PASSWORD
+from core.settings import EMAIL_PASSWORD
 from log import *
-
 
 def brief_report(settings):
     pis = settings['pis']

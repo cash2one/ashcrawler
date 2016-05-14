@@ -18,14 +18,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from bs4 import BeautifulSoup
 from log import *
-from settings import TIMEOUT, TZCHINA
+from settings import TIMEOUT, TZCHINA, WC_NAME, WC_PSW
 import datetime
 import sys
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
-
-username = 'AshCenter'
-password = 'ashcenter2016'
 
 
 # Crawling pages from weixin.sogou.com
@@ -69,12 +67,12 @@ def wccrawler(keyword, project, address, port, username, password):
     # input username
     user = WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.ID, 'u')))
     user.clear()
-    user.send_keys(username, Keys.ARROW_DOWN)
+    user.send_keys(WC_NAME, Keys.ARROW_DOWN)
 
     # input the passowrd
     passwd = browser.find_element_by_id('p')
     passwd.clear()
-    passwd.send_keys(password, Keys.ARROW_DOWN)
+    passwd.send_keys(WC_PSW, Keys.ARROW_DOWN)
 
     # press click and then the vcode appears.
     browser.find_element_by_class_name('login_button').click()
@@ -93,7 +91,6 @@ def wccrawler(keyword, project, address, port, username, password):
         log(NOTICE, "unlogin")
     log(NOTICE, "login")
 
-    # http://weixin.sogou.com/weixin?query=%E6%8D%90%E8%B5%A0+%E5%85%83&sourceid=inttime_day&type=2&page=3
     log(NOTICE, 'Harvesting the new pages generated within the past 24 hours.')
     while True:
         try:
@@ -107,9 +104,7 @@ def wccrawler(keyword, project, address, port, username, password):
             browser.refresh()
             log(NOTICE, 'refreshing')
 
-    # WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.LINK_TEXT, u'全部时间')))
     browser.find_element_by_link_text(u'全部时间').click()
-    # WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.LINK_TEXT, u'一天内')))
     time.sleep(2)
     browser.find_element_by_link_text(u'一天内').click()
     time.sleep(5)
