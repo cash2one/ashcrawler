@@ -48,9 +48,9 @@ def brief_report(settings):
     count_1 = db.pages.find({"created_at": {"$gt": utc_now_1}}).count()
     count_2 = db.pages.find({"created_at": {"$gt": utc_now_2}}).count()
     count_5 = db.pages.find({"created_at": {"$gt": utc_now_5}}).count()
-    count_baidu_1  = db.pages.find({"$OR": [{"type": "baidu"}, {"created_at": {"$gt": utc_now_2}}]}).count()
-    count_google_1 = db.pages.find({"$OR": [{"type": "google"}, {"created_at": {"$gt": utc_now_2}}]}).count()
-    count_wechat_1 = db.pages.find({"$OR": [{"type": "wechat"}, {"created_at": {"$gt": utc_now_2}}]}).count()
+    count_baidu_1  = db.pages.find({"$or": [{"type": "baidu"}, {"created_at": {"$gt": utc_now_2}}]}).count()
+    count_google_1 = db.pages.find({"$or": [{"type": "google"}, {"created_at": {"$gt": utc_now_2}}]}).count()
+    count_wechat_1 = db.pages.find({"$or": [{"type": "wechat"}, {"created_at": {"$gt": utc_now_2}}]}).count()
 
     line_1 = "Total posts: %d" % total_posts
     line_2 = "Within the past 24 hours: %d collected" % count_1
