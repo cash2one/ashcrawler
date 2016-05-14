@@ -18,6 +18,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from bs4 import BeautifulSoup
 from log import *
+
 from settings import TIMEOUT, TZCHINA
 import datetime
 
@@ -27,9 +28,9 @@ def bdcrawler(keyword, project, address, port):
     start = datetime.datetime.now()
     log(NOTICE, 'Crawling Baidu with keyword %s....' % keyword)
     if "Linux" in platform.platform():
-        pass
+         browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
     else:
-        browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
+        # browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
 
     # if "Linux" in platform.platform():
     #     display = Display(visible=0, size=(1024, 768))
