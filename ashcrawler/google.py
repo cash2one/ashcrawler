@@ -44,6 +44,7 @@ def ggcrawler(keyword, project, address, port):
 
     client = MongoClient(address, port)
     db = client[project]
+    db.authenticate('admin', 'ash123')
     base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:d&q="
     # base_url = "http://www.baidu.com/s?wd="
     # log(NOTICE, "Total #: %d" % count)
