@@ -46,9 +46,8 @@ def ggcrawler(keyword, project, address, port, username, password):
     client = MongoClient(address, port)
     db = client[project]
     db.authenticate(username, password)
-    base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:d&q="
-    
 
+    base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:d&q="
     i = 0
     while i == 0 or len(soup.find_all('div', class_='g')) != 0:
         # print soup.find_all('a', class_='n')[-1].text
