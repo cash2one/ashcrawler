@@ -51,11 +51,13 @@ def brief_report(settings):
     count_wechat_1 = db.pages.find({"$and": [{"type": "wechat"}, {"created_at": {"$gt": utc_now_1}}]}).count()
     total_weibo_posts = db.posts.find().count()
     count_weibo_1 = db.posts.find({"timestamp": {"$gt": utc_now_1}}).count()
+    count_weibo_2 = db.posts.find({"timestamp": {"$gt": utc_now_2}}).count()
+    count_weibo_7 = db.posts.find({"timestamp": {"$gt": utc_now_5}}).count()
 
     line_1 = "Total records: %d" % (total_posts + total_weibo_posts)
     line_2 = "In the last 24 hours: %d (baidu: %d, google: %d, wechat: %d, weibo: %d)." % (count_1, count_baidu_1, count_google_1, count_wechat_1, count_weibo_1)
-    line_3 = "In the last 2 days: %d." % count_2
-    line_4 = "In the last week: %d." % count_7
+    line_3 = "In the last 2 days: %d." % (count_2 + count_weibo_2)
+    line_4 = "In the last week: %d." % (count_7 + count_weibo_7)
 
     msg = '''From: Ash Crawling Server <snsgis@gmail.com>
 To: ''' + pi_str[:-1] + '''
