@@ -15,6 +15,6 @@ TIMEOUT = 60
 BAIDU_AK = 'Y4wB8DznamkwhY8RxDiYNSHS'
 # BAIDU_AK = 'fGnFQVLoY6AgmPM1spgYvsD9'
 PB_KEY = 'bYJFjyvIYWbn5vg2eNiFmcapjLu1PUTL'
-EMAIL_PASSWORD = 'nanjing1212'# NNJ1212
+EMAIL_PASSWORD = 'ashchina124'# NNJ1212
 WC_NAME = 'AshCenter'
 WC_PSW = 'ashcenter2016'

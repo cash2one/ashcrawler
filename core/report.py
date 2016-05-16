@@ -23,8 +23,8 @@ def brief_report(settings):
     username = settings['username']
     password = settings['password']
 
-    sender = 'snsgis@gmail.com'
-    email_name = 'snsgis@gmail.com'
+    sender = 'ashchinaphilanthropy@gmail.com'
+    email_name = 'ashchinaphilanthropy@gmail.com'
     t = datetime.datetime.now().strftime('%Y-%m-%d')
 
     pi_str = ''
