@@ -50,13 +50,12 @@ def brief_report(settings):
     count_google_1 = db.pages.find({"$and": [{"type": "google"}, {"created_at": {"$gt": utc_now_1}}]}).count()
     count_wechat_1 = db.pages.find({"$and": [{"type": "wechat"}, {"created_at": {"$gt": utc_now_1}}]}).count()
     total_weibo_posts = db.posts.find().count()
-    count_weibo_1 = db.posts.find({"created_at": {"$gt": utc_now_1}}).count()
+    count_weibo_1 = db.posts.find({"timestamp": {"$gt": utc_now_1}}).count()
 
-    line_1 = "Total records: %d" % total_posts
-    line_2 = "In the last 24 hours: %d (baidu: %d, google: %d, wechat: %d)." % (count_1, count_baidu_1, count_google_1, count_wechat_1)
+    line_1 = "Total records: %d" % (total_posts + total_weibo_posts)
+    line_2 = "In the last 24 hours: %d (baidu: %d, google: %d, wechat: %d, weibo: %d)." % (count_1, count_baidu_1, count_google_1, count_wechat_1, count_weibo_1)
     line_3 = "In the last 2 days: %d." % count_2
     line_4 = "In the last week: %d." % count_7
-    line_5 = "For Weibo (Beta Version) Total posts: %d, in the last week: %d." % (total_weibo_posts, count_weibo_1)
 
     msg = '''From: Ash Crawling Server <snsgis@gmail.com>
 To: ''' + pi_str[:-1] + '''
@@ -71,7 +70,6 @@ Here is a briefing about the crawling progress:
      ''' + line_2 + '''
      ''' + line_3 + '''
      ''' + line_4 + '''
-     ''' + line_5 + '''
 --
 Sent from the Ash Crawling Server.'''
     # The actual mail send
