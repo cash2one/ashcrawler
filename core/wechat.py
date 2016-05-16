@@ -31,16 +31,16 @@ def wccrawler(keyword, project, address, port, username, password):
     start = datetime.datetime.now()
     log(NOTICE, 'Crawling WeChat with keyword %s....' % keyword)
 
-    # if "Linux" in platform.platform():
-    #     browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
-    # else:
-    #     browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
-    #
-    firefox_profile = webdriver.FirefoxProfile()
-    firefox_profile.set_preference('permissions.default.image', 2)
-    firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
+    if "Linux" in platform.platform():
+        browser = webdriver.PhantomJS(executable_path=r'/home/ubuntu/phantomjs-2.1.1-linux-x86_64/bin/phantomjs')
+    else:
+        browser = webdriver.PhantomJS(executable_path=r'C:\Workspace\phantomjs\bin\phantomjs.exe')
 
-    browser = webdriver.Firefox(firefox_profile=firefox_profile)
+    # firefox_profile = webdriver.FirefoxProfile()
+    # firefox_profile.set_preference('permissions.default.image', 2)
+    # firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
+    #
+    # browser = webdriver.Firefox(firefox_profile=firefox_profile)
 
     browser.set_window_size(960, 1050)
     browser.set_window_position(0, 0)
