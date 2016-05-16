@@ -49,7 +49,7 @@ def wccrawler(keyword, project, address, port, username, password):
 
     client = MongoClient(address, port)
     db = client[project]
-    # db.authenticate(username, password)
+    db.authenticate(username, password)
 
     base_url = "http://weixin.sogou.com/"
 
