@@ -34,7 +34,7 @@ def brief_report(settings):
     now = datetime.datetime.now()
     utc_now_1 = now - datetime.timedelta(days=1)
     utc_now_2 = now - datetime.timedelta(days=2)
-    utc_now_5 = now - datetime.timedelta(days=7)
+    utc_now_7 = now - datetime.timedelta(days=7)
 
     # For page information
     client = MongoClient(address, port)
@@ -45,14 +45,14 @@ def brief_report(settings):
 
     count_1 = db.pages.find({"created_at": {"$gt": utc_now_1}}).count()
     count_2 = db.pages.find({"created_at": {"$gt": utc_now_2}}).count()
-    count_7 = db.pages.find({"created_at": {"$gt": utc_now_5}}).count()
+    count_7 = db.pages.find({"created_at": {"$gt": utc_now_7}}).count()
     count_baidu_1  = db.pages.find({"$and": [{"type": "baidu"}, {"created_at": {"$gt": utc_now_1}}]}).count()
     count_google_1 = db.pages.find({"$and": [{"type": "google"}, {"created_at": {"$gt": utc_now_1}}]}).count()
     count_wechat_1 = db.pages.find({"$and": [{"type": "wechat"}, {"created_at": {"$gt": utc_now_1}}]}).count()
     total_weibo_posts = db.posts.find().count()
     count_weibo_1 = db.posts.find({"timestamp": {"$gt": utc_now_1}}).count()
     count_weibo_2 = db.posts.find({"timestamp": {"$gt": utc_now_2}}).count()
-    count_weibo_7 = db.posts.find({"timestamp": {"$gt": utc_now_5}}).count()
+    count_weibo_7 = db.posts.find({"timestamp": {"$gt": utc_now_7}}).count()
 
     line_1 = "Total records: %d" % (total_posts + total_weibo_posts)
     line_2 = "In the last 24 hours: %d (baidu: %d, google: %d, wechat: %d, weibo: %d)." % (count_1, count_baidu_1, count_google_1, count_wechat_1, count_weibo_1)

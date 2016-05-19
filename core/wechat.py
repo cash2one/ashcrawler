@@ -137,9 +137,9 @@ def wccrawler(keyword, project, address, port, username, password):
             page_json = {
                 "type": "wechat",
                 "keyword": keyword,
-                "title": title,
+                "title": title.strip(),
                 "username": user_name,
-                "abstract": abstract,
+                "abstract": abstract.strip(),
                 "orig_url": url,
                 "url": url,
                 "created_at": t_china,

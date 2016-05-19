@@ -100,8 +100,8 @@ def bdcrawler(keyword, project, address, port, username, password):
             page_json = {
                 "type": "baidu",
                 "keyword": keyword,
-                "title": title,
-                "abstract": abstract,
+                "title": title.strip(),
+                "abstract": abstract.strip(),
                 "orig_url": orig_url,
                 "url": url,
                 "created_at": t_china,

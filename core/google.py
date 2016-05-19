@@ -79,8 +79,8 @@ def ggcrawler(keyword, project, address, port, username, password):
             page_json = {
                 "type": "google",
                 "keyword": keyword,
-                "title": title,
-                "abstract": abstract,
+                "title": title.strip(),
+                "abstract": abstract.strip(),
                 "orig_url": url,
                 "url": url,
                 "created_at": t_china
