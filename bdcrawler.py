@@ -17,7 +17,10 @@ from settings import SETTINGS
 current_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
 sys.path.append(current_path)
 
-keywords = ['捐赠 元', '慈善']
+keywords = [
+    '"捐赠 元 王" | "捐赠 元 李" | "捐赠 元 张" | "捐赠 元 刘" | "捐赠 元 陈"',
+    '捐赠 元',
+    '慈善']
 
 start = datetime.datetime.now()
 log(NOTICE, 'Baidu Crawler Initializing...')
