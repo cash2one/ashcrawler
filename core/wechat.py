@@ -150,6 +150,8 @@ def wccrawler(keyword, project, address, port, username, password):
                 db.pages.insert_one(page_json)
             except errors.DuplicateKeyError:
                 log(NOTICE, 'This post has already been inserted.')
+            except:
+                pass
         i += 1
         print "page" + str(i) + " is processed: " + browser.current_url
         # WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.LINK_TEXT, u'下一页')))
