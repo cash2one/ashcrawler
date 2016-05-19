@@ -92,7 +92,7 @@ def del_duplicates(settings):
         if len(temp) >= 8:
             title = page['title'][:8]
             print title
-        titles.append(title)
+            titles.append(title)
     titles = sorted(titles)
     uniques = set(titles)
     log(NOTICE, "data list created")
