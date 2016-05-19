@@ -89,8 +89,8 @@ def del_duplicates(settings):
     titles = []
     for page in pages:
         temp = page['title']
-        if len(temp) >= 6:
-            title = page['title'][:6]
+        if len(temp) >= 8:
+            title = page['title'][:8]
             print title
         titles.append(title)
     titles = sorted(titles)
