@@ -77,7 +77,7 @@ def del_duplicates(settings):
     password = settings['password']
 
     now = datetime.datetime.now()
-    start = now - datetime.timedelta(days=100)
+    start = now - datetime.timedelta(days=1000)
 
     # For page information
     client = MongoClient(address, port)
@@ -89,8 +89,8 @@ def del_duplicates(settings):
     titles = []
     for page in pages:
         temp = page['title']
-        if len(temp) >= 8:
-            title = page['title'][:8]
+        if len(temp) >= 6:
+            title = page['title'][:6]
             print title
         titles.append(title)
     titles = sorted(titles)
