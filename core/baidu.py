@@ -77,6 +77,8 @@ def bdcrawler(keyword, project, address, port, username, password):
 
     while i == 0 or soup.find_all('a', class_='n')[-1].text == u'下一页>':
         # print soup.find_all('a', class_='n')[-1].text
+        if i >= 15:
+            break
         url = path_url + '&pn=' + str(i * 10)
         log(NOTICE, '===============Parsing Page %d===============' % (i + 1))
         try:

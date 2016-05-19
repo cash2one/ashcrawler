@@ -51,6 +51,8 @@ def ggcrawler(keyword, project, address, port, username, password):
     i = 0
     while i == 0 or len(soup.find_all('div', class_='g')) != 0:
         # print soup.find_all('a', class_='n')[-1].text
+        if i >= 15:
+            break
         url = base_url + urllib.quote(keyword) + '&start=' + str(i * 10)
         log(NOTICE, '===============Parsing Page %d===============' % (i + 1))
 

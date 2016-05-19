@@ -13,6 +13,7 @@ import sys
 from settings import SETTINGS
 from core.utils import del_duplicates
 
+
 current_path = os.path.split(os.path.realpath(sys.argv[0]))[0]
 sys.path.append(current_path)
 

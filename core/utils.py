@@ -82,7 +82,7 @@ def del_duplicates(settings):
     # For page information
     client = MongoClient(address, port)
     db = client[project]
-    db.authenticate(username, password)
+    # db.authenticate(username, password)
 
     pages = db.pages.find({"created_at": {"$gt": start}})
 
@@ -96,9 +96,12 @@ def del_duplicates(settings):
     titles = sorted(titles)
     uniques = set(titles)
     log(NOTICE, "data list created")
+
     for unique in uniques:
         titles.remove(unique)
     log(NOTICE, "remove the uniques")
+
     for title in titles:
-        db.pages.remove({'title': {'$regex': title}}, 1)
+        db.pages.remove({'title': {'$regex': title}}, True)
     log(NOTICE, "completed")
+
