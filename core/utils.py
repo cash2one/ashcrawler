@@ -82,7 +82,7 @@ def del_duplicates(settings):
     # For page information
     client = MongoClient(address, port)
     db = client[project]
-    # db.authenticate(username, password)
+    db.authenticate(username, password)
 
     pages = db.pages.find({"created_at": {"$gt": start}})
 
