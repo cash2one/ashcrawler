@@ -107,7 +107,8 @@ def bdcrawler(keyword, project, address, port, username, password):
                 "orig_url": orig_url,
                 "url": url,
                 "created_at": t_china,
-                "time_before": time_before
+                "time_before": time_before,
+                "page": i + 1
             }
             try:
                 db.pages.insert_one(page_json)

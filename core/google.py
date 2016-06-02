@@ -35,11 +35,10 @@ def ggcrawler(keyword, project, address, port, username, password):
     # firefox_profile = webdriver.FirefoxProfile()
     # firefox_profile.set_preference('permissions.default.image', 2)
     # firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
-    #
     # browser = webdriver.Firefox(firefox_profile=firefox_profile)
-    #
-    # browser.set_window_size(960, 1050)
-    # browser.set_window_position(0, 0)
+
+    browser.set_window_size(960, 1050)
+    browser.set_window_position(0, 0)
 
     browser.set_page_load_timeout(TIMEOUT)
 
@@ -85,7 +84,8 @@ def ggcrawler(keyword, project, address, port, username, password):
                 "abstract": abstract.strip(),
                 "orig_url": url,
                 "url": url,
-                "created_at": t_china
+                "created_at": t_china,
+                "page": i + 1
             }
             # "time_before": time_before
             try:
