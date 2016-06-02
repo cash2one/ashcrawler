@@ -129,21 +129,21 @@ def add_tags(settings):
     for tag in [u"亿", u"千万", u"百万", u"十万"]:
         log(NOTICE, "processing tag %s" % tag)
         pages = db.pages.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
-        i = 0
+        # i = 0
         for page in pages:
             db.pages.update({'_id': page['_id']}, {'$set': {'unit': tag}})
-            i += 1
-            print i
+            # i += 1
+            # print i
         log(NOTICE, "tagging unit completed.")
 
     for tag in [u"募捐", u"扶贫济困日", u"慈善日"]:
         log(NOTICE, "processing tag %s" % tag)
         pages = db.pages.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
-        i = 0
+        # i = 0
         for page in pages:
             db.pages.update({'_id': page['_id']}, {'$set': {'event': tag}})
-            i += 1
-            print i
+            # i += 1
+            # print i
         log(NOTICE, "tagging unit completed.")
 
     log(NOTICE, "completed")
