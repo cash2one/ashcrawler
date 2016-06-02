@@ -76,13 +76,14 @@ def del_duplicates(settings):
     username = settings['username']
     password = settings['password']
 
+    # Within the last 24 hours
     now = datetime.datetime.now()
     start = now - datetime.timedelta(days=1000)
 
     # For page information
     client = MongoClient(address, port)
     db = client[project]
-    db.authenticate(username, password)
+    # db.authenticate(username, password)
 
     pages = db.pages.find({"created_at": {"$gt": start}})
 
@@ -90,7 +91,7 @@ def del_duplicates(settings):
     for page in pages:
         temp = page['title']
         if len(temp) >= 8:
-            title = page['title'][:8]
+            title = page['title'].replace(" ", "").strip()[:8]
             print title
             titles.append(title)
     titles = sorted(titles)
@@ -102,6 +103,47 @@ def del_duplicates(settings):
     log(NOTICE, "remove the uniques")
 
     for title in titles:
-        db.pages.remove({'title': {'$regex': title}}, True)
+        db.pages.delete_one({'title': {'$regex': title}})
     log(NOTICE, "completed")
 
+
+# tag 1：亿、千万、百万、十万
+# tag 2：募捐、扶贫济困日、慈善日
+# tag 3: name list in the this email
+def add_tags(settings):
+
+    project = settings['project']
+    address = settings['address']
+    port = settings['port']
+    username = settings['username']
+    password = settings['password']
+
+    now = datetime.datetime.now()
+    start = now - datetime.timedelta(days=1000)
+
+    # For page information
+    client = MongoClient(address, port)
+    db = client[project]
+    db.authenticate(username, password)
+
+    for tag in [u"亿", u"千万", u"百万", u"十万"]:
+        log(NOTICE, "processing tag %s" % tag)
+        pages = db.pages.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
+        i = 0
+        for page in pages:
+            db.pages.update({'_id': page['_id']}, {'$set': {'unit': tag}})
+            i += 1
+            print i
+        log(NOTICE, "tagging unit completed.")
+
+    for tag in [u"募捐", u"扶贫济困日", u"慈善日"]:
+        log(NOTICE, "processing tag %s" % tag)
+        pages = db.pages.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
+        i = 0
+        for page in pages:
+            db.pages.update({'_id': page['_id']}, {'$set': {'event': tag}})
+            i += 1
+            print i
+        log(NOTICE, "tagging unit completed.")
+
+    log(NOTICE, "completed")

@@ -38,7 +38,6 @@ def bdcrawler(keyword, project, address, port, username, password):
     # firefox_profile = webdriver.FirefoxProfile()
     # firefox_profile.set_preference('permissions.default.image', 2)
     # firefox_profile.set_preference('dom.ipc.plugins.enabled.libflashplayer.so', 'false')
-    #
     # browser = webdriver.Firefox(firefox_profile=firefox_profile)
 
     browser.set_window_size(960, 1050)
