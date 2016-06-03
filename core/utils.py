@@ -126,6 +126,16 @@ def add_tags(settings):
     db = client[project]
     db.authenticate(username, password)
 
+    file = open("surnames.txt", 'r')
+    for tag_temp in file.readlines():
+        tag = tag_temp.strip()
+        log(NOTICE, "processing tag %s" % tag)
+        pages = db.pages.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
+        for page in pages:
+            db.pages.update({'_id': page['_id']}, {'$set': {'surname': tag}})
+        log(NOTICE, "tagging surnames completed.")
+    file.close()
+    # Baidu, Google, and WeChat
     for tag in [u"亿", u"千万", u"百万", u"十万"]:
         log(NOTICE, "processing tag %s" % tag)
         pages = db.pages.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
@@ -134,7 +144,7 @@ def add_tags(settings):
             db.pages.update({'_id': page['_id']}, {'$set': {'unit': tag}})
             # i += 1
             # print i
-        log(NOTICE, "tagging unit completed.")
+        log(NOTICE, "tagging units completed.")
 
     for tag in [u"募捐", u"扶贫济困日", u"慈善日"]:
         log(NOTICE, "processing tag %s" % tag)
@@ -144,6 +154,27 @@ def add_tags(settings):
             db.pages.update({'_id': page['_id']}, {'$set': {'event': tag}})
             # i += 1
             # print i
-        log(NOTICE, "tagging unit completed.")
+        log(NOTICE, "tagging events completed.")
+
+    # Weibo
+    for tag in [u"亿", u"千万", u"百万", u"十万"]:
+        log(NOTICE, "processing tag %s" % tag)
+        pages = db.posts.find({"$and": [{"timestamp": {"$gt": start}}, {'content': {'$regex': tag}}]})
+        # i = 0
+        for page in pages:
+            db.posts.update({'_id': page['_id']}, {'$set': {'unit': tag}})
+            # i += 1
+            # print i
+        log(NOTICE, "tagging units completed.")
+
+    for tag in [u"募捐", u"扶贫济困日", u"慈善日"]:
+        log(NOTICE, "processing tag %s" % tag)
+        pages = db.pages.find({"$and": [{"timestamp": {"$gt": start}}, {'content': {'$regex': tag}}]})
+        # i = 0
+        for page in pages:
+            db.posts.update({'_id': page['_id']}, {'$set': {'event': tag}})
+            # i += 1
+            # print i
+        log(NOTICE, "tagging events completed.")
 
     log(NOTICE, "completed")
