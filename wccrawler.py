@@ -36,9 +36,7 @@ sys.path.append(current_path)
 #     '捐赠 元 康|捐赠 元 施|捐赠 元 牛|捐赠 元 洪',
 #     '捐赠 元', '慈善']
 
-
-keywords = [
-    '捐赠 元', '慈善']
+keywords = ['捐赠 元']
 
 start = datetime.datetime.now()
 log(NOTICE, 'Wechat Crawler Initializing...')
