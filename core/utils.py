@@ -132,7 +132,7 @@ def add_tags(settings):
         log(NOTICE, "processing tag %s" % tag)
         pages = db.pages.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
         for page in pages:
-            db.pages.update({'_id': page['_id']}, {'$set': {'surname': tag}})
+            db.pages.update({'_id': page['_id']}, {'$set': {'elite': tag}})
         log(NOTICE, "tagging surnames completed.")
     file.close()
     # Baidu, Google, and WeChat
@@ -176,5 +176,15 @@ def add_tags(settings):
             # i += 1
             # print i
         log(NOTICE, "tagging events completed.")
+
+    file = open("surnames.txt", 'r')
+    for tag_temp in file.readlines():
+        tag = tag_temp.strip()
+        log(NOTICE, "processing tag %s" % tag)
+        pages = db.posts.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
+        for page in pages:
+            db.posts.update({'_id': page['_id']}, {'$set': {'elite': tag}})
+        log(NOTICE, "tagging surnames completed.")
+    file.close()
 
     log(NOTICE, "completed")
