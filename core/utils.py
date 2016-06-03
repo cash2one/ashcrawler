@@ -183,6 +183,7 @@ def add_tags(settings):
         log(NOTICE, "processing tag %s" % tag)
         pages = db.posts.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
         for page in pages:
+            # pass
             db.posts.update({'_id': page['_id']}, {'$set': {'elite': tag}})
         log(NOTICE, "tagging surnames completed.")
     file.close()
