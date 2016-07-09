@@ -85,7 +85,7 @@ def del_duplicates(settings):
     db = client[project]
     db.authenticate(username, password)
 
-    pages = db.pages-20160710.find({"created_at": {"$gt": start}})
+    pages = db.pages_c.find({"created_at": {"$gt": start}})
 
     titles = []
     for page in pages:
@@ -103,7 +103,7 @@ def del_duplicates(settings):
     log(NOTICE, "remove the uniques")
 
     for title in titles:
-        db.pages-20160710.delete_one({'title': {'$regex': title}})
+        db.pages_c.delete_one({'title': {'$regex': title}})
     log(NOTICE, "completed")
 
 
