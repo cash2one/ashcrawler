@@ -78,14 +78,14 @@ def del_duplicates(settings):
 
     # Within the last 24 hours
     now = datetime.datetime.now()
-    start = now - datetime.timedelta(days=3)
+    start = now - datetime.timedelta(days=1000)
 
     # For page information
     client = MongoClient(address, port)
     db = client[project]
     db.authenticate(username, password)
 
-    pages = db.pages.find({"created_at": {"$gt": start}})
+    pages = db.pages-20160710.find({"created_at": {"$gt": start}})
 
     titles = []
     for page in pages:
@@ -103,7 +103,7 @@ def del_duplicates(settings):
     log(NOTICE, "remove the uniques")
 
     for title in titles:
-        db.pages.delete_one({'title': {'$regex': title}})
+        db.pages-20160710.delete_one({'title': {'$regex': title}})
     log(NOTICE, "completed")
 
 
@@ -120,7 +120,7 @@ def add_tags(settings):
     password = settings['password']
 
     now = datetime.datetime.now()
-    start = now - datetime.timedelta(days=3)
+    start = now - datetime.timedelta(days=600)
 
     # For page information
     client = MongoClient(address, port)
