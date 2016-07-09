@@ -146,6 +146,16 @@ def add_tags(settings):
             # print i
         log(NOTICE, "tagging units completed.")
 
+    for tag in [u"学校", u"环保", u"扶贫"]:
+        log(NOTICE, "processing tag %s" % tag)
+        pages = db.pages.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
+        # i = 0
+        for page in pages:
+            db.pages.update({'_id': page['_id']}, {'$set': {'cause': tag}})
+            # i += 1
+            # print i
+        log(NOTICE, "tagging cause completed.")
+
     for tag in [u"募捐", u"扶贫济困日", u"慈善日"]:
         log(NOTICE, "processing tag %s" % tag)
         pages = db.pages.find({"$and": [{"created_at": {"$gt": start}}, {'abstract': {'$regex': tag}}]})
@@ -176,6 +186,16 @@ def add_tags(settings):
             # i += 1
             # print i
         log(NOTICE, "tagging events completed.")
+
+    for tag in [u"学校", u"环保", u"扶贫"]:
+        log(NOTICE, "processing tag %s" % tag)
+        pages = db.pages.find({"$and": [{"timestamp": {"$gt": start}}, {'content': {'$regex': tag}}]})
+        # i = 0
+        for page in pages:
+            db.posts.update({'_id': page['_id']}, {'$set': {'cause': tag}})
+            # i += 1
+            # print i
+        log(NOTICE, "tagging cause completed.")
 
     file = open("surnames.txt", 'r')
     for tag_temp in file.readlines():
