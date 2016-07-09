@@ -78,7 +78,7 @@ def del_duplicates(settings):
 
     # Within the last 24 hours
     now = datetime.datetime.now()
-    start = now - datetime.timedelta(days=1000)
+    start = now - datetime.timedelta(days=3)
 
     # For page information
     client = MongoClient(address, port)
@@ -109,6 +109,7 @@ def del_duplicates(settings):
 
 # tag 1：亿、千万、百万、十万
 # tag 2：募捐、扶贫济困日、慈善日
+# tag 4：学校、环保、扶贫
 # tag 3: name list in the this email
 def add_tags(settings):
 
@@ -119,7 +120,7 @@ def add_tags(settings):
     password = settings['password']
 
     now = datetime.datetime.now()
-    start = now - datetime.timedelta(days=1000)
+    start = now - datetime.timedelta(days=3)
 
     # For page information
     client = MongoClient(address, port)
