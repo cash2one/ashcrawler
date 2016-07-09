@@ -97,10 +97,12 @@ def del_duplicates(settings):
     titles = sorted(titles)
     uniques = set(titles)
     log(NOTICE, "data list created")
+    print "uniques count: ", len(uniques)
 
     for unique in uniques:
         titles.remove(unique)
     log(NOTICE, "remove the uniques")
+    print "the items will be removed: ", len(titles)
 
     for title in titles:
         db.pages_c.delete_one({'title': {'$regex': title}})
