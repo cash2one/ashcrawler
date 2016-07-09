@@ -78,14 +78,14 @@ def del_duplicates(settings):
 
     # Within the last 24 hours
     now = datetime.datetime.now()
-    start = now - datetime.timedelta(days=1000)
+    start = now - datetime.timedelta(days=3)
 
     # For page information
     client = MongoClient(address, port)
     db = client[project]
     db.authenticate(username, password)
 
-    pages = db.pages_c.find({"created_at": {"$gt": start}})
+    pages = db.pages.find({"created_at": {"$gt": start}})
 
     titles = []
     for page in pages:
@@ -105,7 +105,7 @@ def del_duplicates(settings):
     print "the items will be removed: ", len(titles)
 
     for title in titles:
-        db.pages_c.delete_one({'title': {'$regex': title}})
+        db.pages.delete_one({'title': {'$regex': title}})
     log(NOTICE, "completed")
 
 
