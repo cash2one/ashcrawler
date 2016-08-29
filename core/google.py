@@ -44,7 +44,7 @@ def ggcrawler(keyword, project, address, port, username, password):
 
     client = MongoClient(address, port)
     db = client[project]
-    # db.authenticate(username, password)
+    db.authenticate(username, password)
 
     # within the past day
     base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:d&q="
@@ -84,7 +84,7 @@ def ggcrawler(keyword, project, address, port, username, password):
                 log(WARNING, 'find an unusual page.')
                 continue
             try:
-                time_before = item.find('span', class_='f').text
+                time_before = item.find('span', class_='f').text.encode('utf-8', 'ignore')
             except:
                 log(WARNING, 'find an unusual time_before tag.')
             page_json = {
@@ -94,7 +94,7 @@ def ggcrawler(keyword, project, address, port, username, password):
                 "abstract": abstract.strip(),
                 "orig_url": url,
                 "url": url,
-                "time_before": time_before,
+                "time_before": time_before.strip(),
                 "created_at": t_china,
                 "page": i + 1
             }
