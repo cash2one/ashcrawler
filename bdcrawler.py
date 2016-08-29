@@ -27,10 +27,6 @@ keywords = [
     ]
 
 
-keywords = [
-    '"捐赠 元 总经理" | "捐赠 元 董事长"'
-    ]
-
 start = datetime.datetime.now()
 log(NOTICE, 'Baidu Crawler Initializing...')
 for keyword in keywords:
