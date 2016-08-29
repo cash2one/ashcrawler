@@ -26,9 +26,6 @@ keywords = [
     '捐赠 元 总经理 OR 董事长'
 ]
 
-keywords = [
-    '捐赠 元'
-]
 
 start = datetime.datetime.now()
 log(NOTICE, 'Google Crawler Initializing...')
