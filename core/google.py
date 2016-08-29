@@ -46,12 +46,16 @@ def ggcrawler(keyword, project, address, port, username, password):
     db = client[project]
     db.authenticate(username, password)
 
-    base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:d&q="
+    # within the past day
+    # base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:d&q="
+    # within the past year
+    base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:y&q="
     i = 0
     while i == 0 or len(soup.find_all('div', class_='g')) != 0:
         # print soup.find_all('a', class_='n')[-1].text
-        if i >= 15:
-            break
+        # the page to crawler. stop at the 15th.
+        # if i >= 15:
+        #    break
         url = base_url + urllib.quote(keyword) + '&start=' + str(i * 10)
         log(NOTICE, '===============Parsing Page %d===============' % (i + 1))
 
