@@ -114,7 +114,7 @@ def wccrawler(keyword, project, address, port, username, password):
 
     browser.find_element_by_link_text(u'全部时间').click()
     time.sleep(2)
-    browser.find_element_by_link_text(u'一天内').click()
+    browser.find_element_by_link_text(u'一年内').click()
     time.sleep(5)
     soup = BeautifulSoup(browser.page_source, 'html5lib')
     i = 0
