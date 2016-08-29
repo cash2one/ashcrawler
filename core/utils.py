@@ -91,6 +91,8 @@ def del_duplicates(settings):
     for page in pages:
         temp = page['title']
         if len(temp) >= 8:
+            # 帮助删除duplicates,但是在最终删除duplicates的时候，
+            # 可能出现使用的pattern中原来有空格，但是没法删除的情况。
             title = page['title'].replace(" ", "").strip()[:8]
             print title
             titles.append(title)
