@@ -78,18 +78,18 @@ def ggcrawler(keyword, project, address, port, username, password):
         # print url
         t_china = datetime.datetime.now(TZCHINA)
         for item in items:
-            time_before = ''
+            time_before = ''.text.encode('utf-8', 'ignore')
             try:
                 title = item.find('h3').text.encode('utf-8', 'ignore')
                 url = str(item.find('h3').find('a').attrs['href'])[7:].split("&sa=")[0]
                 orig_url = url
-                abstract = item.find('span', class_='st').text
+                abstract = item.find('span', class_='st').text.encode('utf-8', 'ignore')
                 log(NOTICE, '%s from %s at %s' % (str(title), orig_url, str(t_china)))
             except AttributeError:
                 log(WARNING, 'find an unusual page.')
                 continue
             try:
-                time_before = item.find('span', class_='f').text
+                time_before = item.find('span', class_='f').text.encode('utf-8', 'ignore')
             except:
                 log(WARNING, 'find an unusual time_before tag.')
             page_json = {
@@ -99,7 +99,7 @@ def ggcrawler(keyword, project, address, port, username, password):
                 "abstract": abstract.strip(),
                 "orig_url": url,
                 "url": url,
-                "time_before": time_before,
+                "time_before": time_before.strip(),
                 "created_at": t_china,
                 "page": i + 1
             }
