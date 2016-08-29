@@ -78,7 +78,7 @@ def ggcrawler(keyword, project, address, port, username, password):
         # print url
         t_china = datetime.datetime.now(TZCHINA)
         for item in items:
-            time_before = ''.encode('utf-8', 'ignore')
+            time_before = ''
             try:
                 title = item.find('h3').text.encode('utf-8', 'ignore')
                 url = str(item.find('h3').find('a').attrs['href'])[7:].split("&sa=")[0]
@@ -99,7 +99,7 @@ def ggcrawler(keyword, project, address, port, username, password):
                 "abstract": abstract.strip(),
                 "orig_url": url,
                 "url": url,
-                "time_before": time_before.strip(),
+                "time_before": time_before,
                 "created_at": t_china,
                 "page": i + 1
             }
