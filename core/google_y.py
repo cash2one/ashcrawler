@@ -92,6 +92,7 @@ def ggcrawler(keyword, project, address, port, username, password):
                 time_before = item.find('span', class_='f').text.encode('utf-8', 'ignore')
             except:
                 log(WARNING, 'find an unusual time_before tag.')
+                log(WARNING, time_before)
             page_json = {
                 "type": "google",
                 "keyword": keyword,
