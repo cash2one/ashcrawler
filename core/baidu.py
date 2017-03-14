@@ -67,8 +67,8 @@ def bdcrawler(keyword, project, address, port, username, password):
     browser.find_element_by_class_name('search_tool_tf').click()
     log(NOTICE, 'Harvesting the new pages generated within the past 24 hours.')
     # time.sleep(2)
-    WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.LINK_TEXT, u'一年内')))
-    browser.find_element_by_link_text(u'一年内').click()
+    WebDriverWait(browser, TIMEOUT).until(EC.presence_of_element_located((By.LINK_TEXT, u'一天内')))
+    browser.find_element_by_link_text(u'一天内').click()
 
     soup = BeautifulSoup(browser.page_source, 'html5lib')
     path_url = browser.current_url
