@@ -77,7 +77,7 @@ def ggcrawler(keyword, project, address, port, username, password):
                 title = item.find('h3').text.encode('utf-8', 'ignore')
                 url = str(item.find('h3').find('a').attrs['href'])[7:].split("&sa=")[0]
                 orig_url = url
-                # time_before = item.find('span', class_='f').text
+                time_before = item.find('span', class_='f').text
                 abstract = item.find('span', class_='st').text
                 log(NOTICE, '%s from %s at %s' % (str(title), orig_url, str(t_china)))
             except AttributeError:
@@ -87,6 +87,7 @@ def ggcrawler(keyword, project, address, port, username, password):
                 time_before = item.find('span', class_='f').text.encode('utf-8', 'ignore')
             except:
                 log(WARNING, 'find an unusual time_before tag.')
+                log(WARNING, time_before)
             page_json = {
                 "type": "google",
                 "keyword": keyword,
