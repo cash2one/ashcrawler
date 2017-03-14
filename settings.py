@@ -11,7 +11,7 @@
 SETTINGS = {
     'project': 'philanthropy',
     'pis': ['Edward_Cunningham@hks.harvard.edu', 'David_Li@hks.harvard.edu', 'xszhang.ellie@gmail.com', 'bo_zhao@hks.harvard.edu'],
-    'address': 'localhost',
+    'address': '35.167.67.47',
     'port': 27017,
     'username': "crawler",
     'password': "ash123!@#",

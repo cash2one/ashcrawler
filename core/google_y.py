@@ -51,7 +51,7 @@ def ggcrawler(keyword, project, address, port, username, password):
     # within the past year
     # base_url = "https://www.google.com/?gws_rd=ssl#tbs=qdr:y&q="
     # winthin a customized period
-    base_url = "https://www.google.com/search?tbs=cdr:1,cd_min:9/1/2015,cd_max:10/1/2015&q="
+    base_url = "https://www.google.com/search?tbs=cdr:1,cd_min:1/1/2017,cd_max:3/13/2017&q="
 
     i = 0
     while i == 0 or len(soup.find_all('div', class_='g')) != 0:
